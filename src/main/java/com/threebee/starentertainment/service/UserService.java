@@ -1,5 +1,7 @@
 package com.threebee.starentertainment.service;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -25,15 +27,18 @@ public class UserService {
 
 	@Transactional
 	public int saveUser(User user) {
+		
+		user.setRole("USER");
+		user.setCreateDate(new Timestamp(System.currentTimeMillis()));
 		int result = userDAO.insert(user);
 		return result;
 	}
-
+	@Transactional
 	public int deleteUser(int id) {
 		int result = userDAO.deleteById(id);
 		return result;
 	}
-	
+	@Transactional
 	public int updateUser(User user) {
 		return userDAO.update(user);
 	}

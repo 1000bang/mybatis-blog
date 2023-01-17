@@ -13,7 +13,7 @@
 	<insert id="insert" parameterType="com.threebee.starentertainment.model.dto.common.User">
 	INSERT INTO 
 	user(username, password, email, profile, role, createDate)
-	VALUES(#{username}, #{password}, #{email}, #{profile}, #{role}, now());
+	VALUES(#{username}, #{password}, #{email}, #{profile}, #{role}, #{createDate});
 	</insert>
 	
 	
