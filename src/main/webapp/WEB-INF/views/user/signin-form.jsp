@@ -5,8 +5,8 @@
 <br>
 <div class="container">
 
-	<h2>회원가입하기</h2>
-	<p>우리의 친구가 되어주세요</p>
+	<h2>로그인 하기</h2>
+	<p>다양한 기록들을 남기고 공유해주세요</p>
 	<br />
 	<form>
 
@@ -17,12 +17,7 @@
 		<div class="mb-3 ">
 			<input type="password" class="form-control" placeholder="enter password">
 		</div >
-		
-		<div class="mb-3 ">
-			<input type="email" class="form-control" placeholder="enter email">
-		</div >
-		
-		<button type="submit" class="btn btn-primary">회원가입</button>
+		<button type="submit" class="btn btn-primary">로그인</button>
 	</form>
 
 

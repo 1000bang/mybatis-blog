@@ -11,7 +11,7 @@ html,body{
 	
 }
 
-m--wrap {
+.m--wrap {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
@@ -19,7 +19,7 @@ m--wrap {
 }
 
 
-f--wrap {
+.f--wrap {
 	display: flex;
 	flex-direction: column;
 	margin-top: auto;
@@ -27,7 +27,7 @@ f--wrap {
 
 footer{
 	display: flex;
-	flex-direction: colomn;
+	flex-direction: column;
 	background-color:  #e9ecef;
 	padding: 30px;
 	align-items: center;
