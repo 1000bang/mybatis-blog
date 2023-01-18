@@ -1,5 +1,7 @@
 package com.threebee.starentertainment.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.threebee.starentertainment.model.dto.common.User;
+import com.threebee.starentertainment.model.dto.res.SignInDTO;
 /**
  * 
  * @author 1000bang
@@ -20,8 +23,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserController {
 
-	
+	//DI 처리 
 	private final UserService userservice;
+	private final HttpSession session;
 	
 	/*
 	 * 인증 처리 불요 (public) 
@@ -53,5 +57,26 @@ public class UserController {
 		userservice.saveUser(user);
 		return "redirect:/";
 	}
+	
+	/* 
+	 * 인증 불필요
+	 * 로그인 처리 
+	 * mime type - form(application/x-www-form-urlencoded)
+	 * parsing stg - object mapper 
+	 * @return 메인화면
+	 */
+	@PostMapping("/signin-proc")
+	public String signInProc(SignInDTO signInDTO) {
+		User principal = userservice.findByUsername(signInDTO);
+		if(principal == null) {
+			return "user/signin_form";
+		}
+		//세션은 키, 벨류로 데이터 저장 가능 
+		session.setAttribute("principal", principal);
+		// 이렇게하면 패스워드 정보노출의 우려가 있음 
+		
+		return "redirect:/";
+	}
+	
 	
 }

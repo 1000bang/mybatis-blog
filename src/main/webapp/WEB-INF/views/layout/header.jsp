@@ -27,10 +27,18 @@
 			<div class="collapse navbar-collapse" id="collapsibleNavbar">
 				<ul class="navbar-nav">
 					<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="/board/list">list</a></li>
-					<li class="nav-item"><a class="nav-link" href="/board/write">write</a></li>
+					<li class="nav-item"><a class="nav-link" href="/board/list">List</a></li>
+					<c:choose>
+					<c:when test="${sessionScope.principal eq null}">
 					<li class="nav-item"><a class="nav-link" href="/user/sign-in">Sign in</a></li>
-					<li class="nav-item"><a class="nav-link" href="/user/sign-up">Sign up</a></li>
+					<li class="nav-item"><a class="nav-link" href="/user/sign-up">Sign up</a></li>					
+					</c:when>
+					<c:otherwise>
+					
+					<li class="nav-item"><a class="nav-link" href="/board/write">Write</a></li>
+					<li class="nav-item"><a class="nav-link" href="/user/logout">Logout</a></li>
+					</c:otherwise>
+					</c:choose>
 				</ul>
 			</div>
 		</nav>

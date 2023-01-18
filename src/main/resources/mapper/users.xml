@@ -26,7 +26,12 @@
 	<update id="update" parameterType="com.threebee.starentertainment.model.dto.common.User">
 	UPDATE user SET password = #{password}, email = #{email}, profile = #{profile}, role = #{role}
 	WHERE id = #{id};
-	
 	</update>
+	
+	<select id="findByUsername" resultType="com.threebee.starentertainment.model.dto.common.User">
+	SELECT * FROM
+	user
+	WHERE username = #{username};
+	</select>
 	
 </mapper>
