@@ -32,7 +32,6 @@
 					<c:when test="${sessionScope.principal eq null}">
 					<li class="nav-item"><a class="nav-link" href="/user/sign-in">Sign in</a></li>
 					<li class="nav-item"><a class="nav-link" href="/user/sign-up">Sign up</a></li>					
-								<li class="nav-item"><a class="nav-link" href="/board/write">Write</a></li>
 					</c:when>
 					<c:otherwise>
 					

@@ -11,6 +11,7 @@ public interface BoardDAO {
 	
 	public int insert(Board board);
 	public List<Board> findAll();
+	public Board findById(int id);
 	
 	
 }

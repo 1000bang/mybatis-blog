@@ -32,4 +32,8 @@ public class BoardService {
 	public List<Board> selectAll() {
 		return boardDAO.findAll();
 	}
+
+	public Board findById(int id) {
+	 return boardDAO.findById(id);
+	}
 }

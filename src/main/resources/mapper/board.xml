@@ -15,5 +15,9 @@
 	SELECT * FROM board as b, user as u
 	WHERE b.userId = u.id;
 	</select>
+	<select id="findById" resultType="com.threebee.starentertainment.model.dto.common.Board">
+	SELECT * FROM board as b, user as u
+	WHERE b.userId = u.id AND b.id = #{id};
+	</select>
 	
 </mapper>
