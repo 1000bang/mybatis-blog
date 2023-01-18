@@ -55,6 +55,7 @@ public class UserService {
 		return result;
 	}
 	
+	@Transactional
 	public User findByUsername(SignInDTO signInDTO) {
 		//사용자 이름으로 찾는 기능 분리
 		// 찾았다면 넘겨받은 비밀번호 조회된 비밀번호 같은 지 확인해서 처리 

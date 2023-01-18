@@ -9,7 +9,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="/css/style.css">
-<title>Insert title here</title>
+<title>Mybatis blog</title>
 </head>
 <body>
 	<div class="m--wrap">
@@ -32,6 +32,7 @@
 					<c:when test="${sessionScope.principal eq null}">
 					<li class="nav-item"><a class="nav-link" href="/user/sign-in">Sign in</a></li>
 					<li class="nav-item"><a class="nav-link" href="/user/sign-up">Sign up</a></li>					
+								<li class="nav-item"><a class="nav-link" href="/board/write">Write</a></li>
 					</c:when>
 					<c:otherwise>
 					

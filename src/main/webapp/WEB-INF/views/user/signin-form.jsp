@@ -17,6 +17,13 @@
 		<div class="mb-3 ">
 			<input type="password" class="form-control" name="password" value="asd123" placeholder="enter password">
 		</div >
+		
+		<c:if test="${isNotSignIn}">
+		<span>
+		<p class="alert alert-danger"> 잘못된 요청입니다. </p>
+		</span>
+		</c:if>
+		
 		<button type="submit" class="btn btn-primary">로그인</button>
 	</form>
 

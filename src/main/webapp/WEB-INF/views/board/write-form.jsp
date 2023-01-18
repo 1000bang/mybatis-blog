@@ -17,9 +17,9 @@
 			<textarea rows="8" class="form-control"
 				placeholder="enter password"> </textarea>
 		</div>
-		<button type="submit" class="btn btn-primary">글쓰기 완료</button>
 	</form>
+		<button type="submit" class="btn btn-primary">글쓰기 완료</button>
 
 </div>
-
+<script type="text/javascript" src="/js/board.js"></script>
 <%@ include file="../layout/footer.jsp"%>

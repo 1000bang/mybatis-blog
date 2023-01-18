@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -66,15 +67,22 @@ public class UserController {
 	 * @return 메인화면
 	 */
 	@PostMapping("/signin-proc")
-	public String signInProc(SignInDTO signInDTO) {
+	public String signInProc(SignInDTO signInDTO, Model model) {
 		User principal = userservice.findByUsername(signInDTO);
 		if(principal == null) {
-			return "user/signin_form";
+			model.addAttribute("isNotSignIn", true);
+			return "user/signin-form";
 		}
 		//세션은 키, 벨류로 데이터 저장 가능 
 		session.setAttribute("principal", principal);
 		// 이렇게하면 패스워드 정보노출의 우려가 있음 
 		
+		return "redirect:/";
+	}
+	
+	@GetMapping("/logout")
+	public String logout() {
+		session.invalidate();
 		return "redirect:/";
 	}
 	
