@@ -2,6 +2,8 @@ package com.threebee.starentertainment.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.threebee.starentertainment.model.dto.common.Board;
+import com.threebee.starentertainment.model.dto.common.User;
 import com.threebee.starentertainment.service.BoardService;
 
 import lombok.RequiredArgsConstructor;
@@ -50,9 +53,18 @@ public class BoardController {
 	 * @return 디테일 페이지 
 	 */
 	@GetMapping("/detail/{id}")
-	public String boardDetailForm(@PathVariable(name= "id") int id, Model model) {
+	public String boardDetailForm(@PathVariable(name= "id") int id, Model model, HttpSession reqSession) {
 		Board board = boardService.findById(id);
+		User principal = (User)reqSession.getAttribute("principal");
+		boolean isWriter = false;
+		if(principal != null) {
+			if(principal.getUsername().equals(board.getUsername())) {
+				isWriter = true;
+			}
+		}
+	
 		model.addAttribute("board", board);
+		model.addAttribute("isWriter", isWriter);
 		return "board/detail";
 	}
 	

@@ -9,7 +9,7 @@
 	<insert id="insert" parameterType="com.threebee.starentertainment.model.dto.common.Board">
 	INSERT INTO
 	board(title, content, userId, createDate)
-	VALUES(#{title}, #{content}, 3, NOW());
+	VALUES(#{board.title}, #{board.content}, #{userId}, NOW());
 	</insert>
 	<select id="findAll" resultType="com.threebee.starentertainment.model.dto.common.Board">
 	SELECT * FROM board as b, user as u

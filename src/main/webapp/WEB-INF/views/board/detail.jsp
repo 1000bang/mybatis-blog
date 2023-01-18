@@ -31,6 +31,12 @@
 			<span>${board.createDate}</span> <span class="board--urlCopy">URL 복사 </span>
 			<input type="text" value="http://localhost:8080/board/detail/1" id="urlAddress" style="display : none">
 		</div>
+		<c:if test="${isWriter}">
+		<div>
+			<button type="button" id="board-update" class="btn btn-info">update</button>
+			<button type="button" id="board-update" class="btn btn-danger">delete</button>
+		</div>
+		</c:if>
 		<hr/>
 		</div>
 		<br/>

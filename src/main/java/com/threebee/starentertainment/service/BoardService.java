@@ -21,8 +21,8 @@ public class BoardService {
 	 * TODO 유저 아이디 추가해야함 
 	 */
 	@Transactional
-	public int save(Board board) {
-		return boardDAO.insert(board);
+	public int save(Board board, int id) {
+		return boardDAO.insert(board, id);
 	}
 	
 	/*

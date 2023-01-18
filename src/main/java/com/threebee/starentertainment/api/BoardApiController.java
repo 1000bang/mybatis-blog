@@ -1,5 +1,7 @@
 package com.threebee.starentertainment.api;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.threebee.starentertainment.model.dto.common.Board;
+import com.threebee.starentertainment.model.dto.common.User;
 import com.threebee.starentertainment.model.dto.res.ResponseDTO;
 import com.threebee.starentertainment.service.BoardService;
 
@@ -26,10 +29,14 @@ public class BoardApiController {
 	 * 파싱 전략 : object mapper 사 
 	 */
 	@PostMapping("/save")
-	public ResponseEntity<?> saveBoardProc(@RequestBody Board board) {
+	public ResponseEntity<?> saveBoardProc(@RequestBody Board board, HttpSession reqSession) {
 		
-		int result = boardService.save(board);
+		User principal = (User)reqSession.getAttribute("principal");
+		if (principal == null) {
+			System.out.println("잘못된접근");
+		}
 		
+		int result = boardService.save(board, principal.getId());
 		
 		ResponseDTO<Integer> dto = new ResponseDTO<Integer>(1, "글 등록 완료", result);
 		return ResponseEntity.status(HttpStatus.OK).body(dto);	

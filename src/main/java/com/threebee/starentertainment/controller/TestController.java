@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.threebee.starentertainment.model.dto.common.User;
 import com.threebee.starentertainment.service.UserService;
+import com.threebee.starentertainment.utils.Script;
 
 import lombok.RequiredArgsConstructor;
 
@@ -23,14 +24,15 @@ public class TestController {
 	private final UserService userService;
 	
 	@ResponseBody
-	@GetMapping("/req-rest")
+	@GetMapping("/req-test")
 	public String reqTest() {
-		return "<h1>test Ok</h1>";
+		return Script.back("인증권한이 없습니다.");
 	}
 	
 	@GetMapping("/test")
+	@ResponseBody
 	public String test() {
-		return "index";
+		return Script.href("/board/list", "boardlist");
 	}
 	
 	@GetMapping("/user-list")
