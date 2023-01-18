@@ -19,5 +19,11 @@
 	SELECT * FROM board as b, user as u
 	WHERE b.userId = u.id AND b.id = #{id};
 	</select>
+	<delete id="deleteById" parameterType="Integer">
+	DELETE
+	FROM board
+	WHERE id = #{boardId}
+	</delete>
+	
 	
 </mapper>

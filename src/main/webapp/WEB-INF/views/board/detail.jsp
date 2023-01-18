@@ -29,12 +29,13 @@
 		<div class="board--info">
 			<p > ${board.username}</p>
 			<span>${board.createDate}</span> <span class="board--urlCopy">URL 복사 </span>
-			<input type="text" value="http://localhost:8080/board/detail/1" id="urlAddress" style="display : none">
+			<input type="text" value="http://localhost:8080/board/detail/${board.id}" id="urlAddress" style="display : none">
+			<input type="hidden" id="boardId" value="${board.id}">
 		</div>
 		<c:if test="${isWriter}">
 		<div>
-			<button type="button" id="board-update" class="btn btn-info">update</button>
-			<button type="button" id="board-update" class="btn btn-danger">delete</button>
+			<button type="button" id="board--update" class="btn btn-info">update</button>
+			<button type="button" id="board--delete" class="btn btn-danger">delete</button>
 		</div>
 		</c:if>
 		<hr/>
@@ -60,4 +61,5 @@ $( document ).ready(function() {
     });
 });
 </script>
+<script src = "/js/board.js"></script>
 <%@ include file="../layout/footer.jsp"%>

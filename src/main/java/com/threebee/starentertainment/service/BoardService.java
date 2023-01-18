@@ -36,4 +36,8 @@ public class BoardService {
 	public Board findById(int id) {
 	 return boardDAO.findById(id);
 	}
+
+	public int deleteBoard(int boardId) {
+		return boardDAO.deleteById(boardId);
+	}
 }

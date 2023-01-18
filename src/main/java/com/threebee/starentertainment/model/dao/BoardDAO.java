@@ -13,6 +13,7 @@ public interface BoardDAO {
 	public int insert(@Param("board") Board board, @Param("userId")int userId);
 	public List<Board> findAll();
 	public Board findById(int id);
+	public int deleteById(int boardId);
 	
 	
 }

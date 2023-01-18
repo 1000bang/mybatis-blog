@@ -9,6 +9,9 @@
 		$("#save--btn").bind("click", () => {
 			this.save();
 		});
+		$("#board--delete").bind("click", () => {
+			this.delete();
+		});
 	},
 	save : function(){
 		let sendData = {
@@ -30,7 +33,26 @@
 		}).fail(function(error){
 			console.log(error);
 		});
+	},
+	
+	delete : function (){
+		let boardId = $("#boardId").val();
+		
+		$.ajax({
+			type : "delete",
+			url : "/api/board/delete/"+ boardId,
+			dataType : "json"
+		}).done(function(data, textStatus, xhr){
+			console.log(data);
+			data.responseText;
+			
+		}).fail(function(error){
+			console.log(error);
+			error.responseText;
+		});
+		
 	}
+	
 	 
  }
  boardInit.init();
