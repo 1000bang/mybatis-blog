@@ -13,7 +13,7 @@ public class Board {
 	private String title;
 	private String content;
 	private Timestamp createDate;
-	private User user;
+	private String username;
 	//user
 	
 }

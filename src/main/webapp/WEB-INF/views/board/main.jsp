@@ -16,11 +16,14 @@
 			</tr>
 		</thead>
 		<tbody>
+			<c:forEach var="boardItem" items="${boardList}">
+			<c:set var="i" value="${i + 1}"></c:set>
 			<tr>
-				<td>1</td>
-				<td>이란, 尹 ‘UAE의 적’ 발언에…“韓외교부 설명 기다린다”</td>
-				<td>1000bang</td>
+				<td>${i}</td>
+				<td><a>${boardItem.title}</a></td>
+				<td>${boardItem.username}</td>
 			</tr>
+			</c:forEach>
 		</tbody>
 
 	</table>

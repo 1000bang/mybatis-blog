@@ -1,5 +1,7 @@
 package com.threebee.starentertainment.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,5 +23,13 @@ public class BoardService {
 	@Transactional
 	public int save(Board board) {
 		return boardDAO.insert(board);
+	}
+	
+	/*
+	 * 보드 출력 findall  
+	 */
+	@Transactional
+	public List<Board> selectAll() {
+		return boardDAO.findAll();
 	}
 }

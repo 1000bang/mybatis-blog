@@ -11,5 +11,9 @@
 	board(title, content, userId, createDate)
 	VALUES(#{title}, #{content}, 3, NOW());
 	</insert>
+	<select id="findAll" resultType="com.threebee.starentertainment.model.dto.common.Board">
+	SELECT * FROM board as b, user as u
+	WHERE b.userId = u.id;
+	</select>
 	
 </mapper>

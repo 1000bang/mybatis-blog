@@ -32,8 +32,7 @@ public class BoardApiController {
 		
 		
 		ResponseDTO<Integer> dto = new ResponseDTO<Integer>(1, "글 등록 완료", result);
-		return ResponseEntity.status(HttpStatus.OK).body(dto);
-		
+		return ResponseEntity.status(HttpStatus.OK).body(dto);	
 	}
 	
 }

@@ -24,6 +24,9 @@
 			dataType : "json"
 		}).done(function(data, textStatus, xhr){
 			console.log(data);
+			if(data.code == 1){
+				location.href = "/board/list"
+			};
 		}).fail(function(error){
 			console.log(error);
 		});
