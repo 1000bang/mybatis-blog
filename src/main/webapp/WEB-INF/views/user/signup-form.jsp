@@ -25,7 +25,11 @@
 		<div class="mb-3 ">
 			<input type="text" class="form-control"name="profile" placeholder="enter profile" value="개발자">
 		</div >
-		
+		<span>
+		<c:if test="${isError}">
+		<p class="alert alert-danger">${error.message}</p>
+		</c:if>
+		</span>
 		<button type="submit" class="btn btn-primary">회원가입</button>
 	</form>
 

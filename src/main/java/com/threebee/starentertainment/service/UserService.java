@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.threebee.starentertainment.advice.UniqueUserNameException;
 import com.threebee.starentertainment.model.dao.UserDAO;
 import com.threebee.starentertainment.model.dto.common.User;
 
@@ -25,14 +26,35 @@ public class UserService {
 		return userDAO.findAll();
 	}
 
+	
+	/**
+	 * Timestamp - 나노초까지 컨트롤 가능
+	 * Date - 밀리 세컨즈 까지 처리 가능 
+	 * 
+	 */
 	@Transactional
 	public int saveUser(User user) {
 		
 		user.setRole("USER");
 		user.setCreateDate(new Timestamp(System.currentTimeMillis()));
-		int result = userDAO.insert(user);
+		int result = 0;
+		try {
+			result = userDAO.insert(user);
+		} catch (Exception e) {
+			String msg = "중복된 이름이 존재합니다.";
+			String field = "username";
+			String invalidValue = user.getUsername();
+			
+					
+					
+			throw new UniqueUserNameException(msg, field, invalidValue);
+		}
+		
+		
 		return result;
 	}
+	
+	
 	@Transactional
 	public int deleteUser(int id) {
 		int result = userDAO.deleteById(id);
