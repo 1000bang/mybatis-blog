@@ -35,7 +35,7 @@
 					</c:when>
 					<c:otherwise>
 					
-					<li class="nav-item"><a class="nav-link" href="/board/write">Write</a></li>
+					<li class="nav-item"><a class="nav-link" href="/auth/board/write">Write</a></li>
 					<li class="nav-item"><a class="nav-link" href="/user/logout">Logout</a></li>
 					</c:otherwise>
 					</c:choose>

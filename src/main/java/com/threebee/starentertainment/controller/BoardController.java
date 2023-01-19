@@ -21,7 +21,6 @@ import lombok.RequiredArgsConstructor;
  *
  */
 @Controller
-@RequestMapping("/board")
 @RequiredArgsConstructor
 public class BoardController {
 
@@ -31,7 +30,7 @@ public class BoardController {
 	 * 인증 처리 불요 (public) 
 	 * @return 홈화면 
 	 */
-	@GetMapping({"/", "","/list"})
+	@GetMapping({"/", "","/board/list"})
 	public String list(Model model) {
 		List<Board> list = boardService.selectAll();
 		model.addAttribute("boardList", list);
@@ -39,20 +38,20 @@ public class BoardController {
 	}
 	
 	/*
-	 * 인증 처리 
+	 * 인증 처리 필요 !!auth 
 	 * @return 글작성 페이지 
 	 */
-	@GetMapping("/write")
+	@GetMapping("/auth/board/write")
 	public String boardWriteForm() {
 		return "board/write-form";
 	}
 	
 	
 	/*
-	 * 인증 요 
+	 * 인증 x 
 	 * @return 디테일 페이지 
 	 */
-	@GetMapping("/detail/{id}")
+	@GetMapping("/board/detail/{id}")
 	public String boardDetailForm(@PathVariable(name= "id") int id, Model model, HttpSession reqSession) {
 		Board board = boardService.findById(id);
 		User principal = (User)reqSession.getAttribute("principal");
@@ -66,6 +65,17 @@ public class BoardController {
 		model.addAttribute("board", board);
 		model.addAttribute("isWriter", isWriter);
 		return "board/detail";
+	}
+	
+	/*
+	 * 인증 처리 auth
+	 * @return 게시글 수정화면  
+	 */
+	@GetMapping("/auth/board/modify/{id}")
+	public String modify(@PathVariable int id, Model model) {
+		Board board = boardService.findById(id);
+		model.addAttribute("boardData", board);
+		return "board/update-form";
 	}
 	
 }

@@ -33,11 +33,24 @@ public class BoardService {
 		return boardDAO.findAll();
 	}
 
+	/*
+	 * 보드 출력 보드아이디로 찾기   
+	 */
 	public Board findById(int id) {
 	 return boardDAO.findById(id);
 	}
 
+	/*
+	 * 보드 삭제 보드아이디로 삭제   
+	 */
 	public int deleteBoard(int boardId) {
 		return boardDAO.deleteById(boardId);
+	}
+	
+	/*
+	 * 보드 수정     
+	 */
+	public int modifyBoard(Board board) {
+		return boardDAO.modifyById(board);
 	}
 }

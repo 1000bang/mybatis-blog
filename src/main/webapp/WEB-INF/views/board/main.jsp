@@ -5,7 +5,7 @@
 <br>
 <div class="container">
 	<div></div>
-<h2>글쓰기</h2>
+<h2>블로그</h2>
 
 	<table class="table table-striped">
 		<thead>

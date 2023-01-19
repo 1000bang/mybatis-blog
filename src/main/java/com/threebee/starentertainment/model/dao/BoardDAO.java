@@ -14,6 +14,6 @@ public interface BoardDAO {
 	public List<Board> findAll();
 	public Board findById(int id);
 	public int deleteById(int boardId);
-	
+	public int modifyById(Board board);
 	
 }

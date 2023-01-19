@@ -8,7 +8,7 @@
 	<h2>블로그 글 쓰기</h2>
 	<br />
 	<form>
-
+		<input type="hidden" id="boardId" value="1">
 		<div class="mb-3 mt-3">
 			<input type="text" class="form-control" id="title" name="title" placeholder="enter title">
 		</div>

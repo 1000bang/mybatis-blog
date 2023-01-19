@@ -34,7 +34,7 @@
 		</div>
 		<c:if test="${isWriter}">
 		<div>
-			<button type="button" id="board--update" class="btn btn-info">update</button>
+			<a type="button" href="/auth/board/modify/${board.id}" id="board--update" class="btn btn-info">update</a>
 			<button type="button" id="board--delete" class="btn btn-danger">delete</button>
 		</div>
 		</c:if>
