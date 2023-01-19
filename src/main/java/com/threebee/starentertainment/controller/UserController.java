@@ -1,5 +1,8 @@
 package com.threebee.starentertainment.controller;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +36,20 @@ public class UserController {
 	 * @return 로그인 페이지 
 	 */
 	@GetMapping("/sign-in")
-	public String signInForm() {
-		
+	public String signInForm(HttpServletRequest request, Model model) {
+		Cookie[] cookies = request.getCookies();
+		boolean isRemember = false;
+		//username = 값
+		for (Cookie cookie : cookies) {
+			if(cookie.getName().equals("username")) {
+				model.addAttribute(cookie.getName(), cookie.getValue());
+				isRemember = true;
+				System.out.println(">>>><<<<<<");
+				System.out.println(cookie.getName() +"/"+ cookie.getValue());
+				System.out.println(">>>><<<<<<");
+			}
+		}
+		model.addAttribute("isRemember", isRemember);
 		return "user/signin-form";
 	}
 	
@@ -67,7 +82,19 @@ public class UserController {
 	 * @return 메인화면
 	 */
 	@PostMapping("/signin-proc")
-	public String signInProc(SignInDTO signInDTO, Model model) {
+	public String signInProc(SignInDTO signInDTO, Model model,
+						HttpServletResponse response) {
+		
+		//쿠키 생성
+		Cookie cookie = new Cookie("username", signInDTO.getUsername());
+		if(signInDTO.isRemember()) {		
+			cookie.setMaxAge(60*60*24);	
+		}else{
+			cookie.setMaxAge(0);
+		}
+		response.addCookie(cookie);		
+		
+		
 		User principal = userservice.findByUsername(signInDTO);
 		if(principal == null) {
 			model.addAttribute("isNotSignIn", true);
@@ -83,7 +110,7 @@ public class UserController {
 	@GetMapping("/logout")
 	public String logout() {
 		session.invalidate();
-		return "redirect:/";
+		return "redirect:/sign-in";
 	}
 	
 	
